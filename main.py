@@ -50,7 +50,7 @@ def create_student(student_id :int, student : Student):
     students[student_id] = student
     return students[student_id]
 
-# put method
+# put method.
 @app.put("/update_student/{student_id}")
 def update_student(student_id :int, student : UpdateStudent):
     if student_id not in students:
