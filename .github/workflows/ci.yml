@@ -1,4 +1,4 @@
-﻿name: FastAPI CI/CD
+name: FastAPI CI/CD
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -27,9 +27,8 @@ jobs:
 
       - name: Install dependencies
         run: uv sync
-        working-directory: .
 
-      - name: Run app import check
+      - name: Check app imports
         run: uv run python -c "import main; print('Import OK')"
 
   deploy:
@@ -43,4 +42,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Deploy notification
-        run: echo "Deployment step - add your deploy commands here (e.g. Railway, Render, AWS)"
+        run: echo "Add your deploy commands here (e.g. Railway, Render, AWS)"
