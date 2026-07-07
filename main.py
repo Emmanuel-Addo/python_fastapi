@@ -30,9 +30,14 @@ class UpdateStudent( BaseModel):
 def index():
     return {"name": "First name"}
 
+
+
 @app.get("/get-student/{student_id}")
 def get_student(student_id: int):
     return students[student_id]
+
+
+
 
 @app.get("/get-by-name")
 def get_students(*, name: Optional[str] = None, test: int):
@@ -40,6 +45,9 @@ def get_students(*, name: Optional[str] = None, test: int):
         if students[student_id]["name"] == name:
             return students[student_id]
         return {"Data": "Not found"}
+
+
+
 
 # post method 
 @app.post("/create-student/{student_id}")
@@ -49,6 +57,9 @@ def create_student(student_id :int, student : Student):
     
     students[student_id] = student
     return students[student_id]
+
+
+
 
 # put method.
 @app.put("/update_student/{student_id}")
@@ -66,7 +77,9 @@ def update_student(student_id :int, student : UpdateStudent):
         students[student_id].year = student.year
 
     return students[student_id]   
-  
+
+
+
 # delete method 
 @app.delete("/delete-student/{student_id}")
 def delete_student(student_id: int):
